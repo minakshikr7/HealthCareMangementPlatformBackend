@@ -16,7 +16,7 @@ const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001",
   "https://healthcaremangementplatformbackend.onrender.com", // backend (optional)
-  "https://your-frontend-domain.com" // (Optional: add frontend domain when deployed)
+  "https://health-care-mangement-platform-fron.vercel.app" // (Optional: add frontend domain when deployed)
 ];
 
 app.use(cors({
