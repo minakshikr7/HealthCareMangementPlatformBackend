@@ -1,3 +1,4 @@
+import { contact } from "../models/contact.js";
 import { HospitalSchema } from "../models/Hospital.js";
 import {VisitorSchema} from "../models/Visitor.js"
 import { sendCookie } from "../utils/features.js";
@@ -74,3 +75,17 @@ export const GetHospital = async (req, res) => {
       res.status(500).json({ message: "Server error", error });
     }
   };
+
+  export const Contact = async(req,res)=>{
+   try {
+    const { name, email, subject, message } = req.body;
+
+    const newContact = new contact({ name, email, subject, message });
+    await newContact.save();
+
+    res.status(200).json({ success: true, message: 'Message saved to database.' });
+  } catch (err) {
+    console.error('Error saving contact:', err);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+}

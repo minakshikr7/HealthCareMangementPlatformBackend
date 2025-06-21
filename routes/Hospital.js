@@ -23,7 +23,6 @@ router.delete("/hospitals/:hospitalId/departments/:departmentName/facilities/:fa
 
 
 router.patch('/hospitals/:id/departments/:department', updateBedCount);
-// const doctorRoutes = require('./routes/doctors');
 
 
 
