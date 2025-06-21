@@ -18,10 +18,8 @@ const allowedOrigins = [
   "https://healthcaremangementplatformbackend.onrender.com", // backend (optional)
   "https://health-care-mangement-platform-fron.vercel.app" // (Optional: add frontend domain when deployed)
 ];
-
-app.use(cors({
+app.options("*", cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like Postman) or from allowed list
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -31,6 +29,7 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   credentials: true
 }));
+
 
 // Middleware to parse JSON & cookies
 app.use(express.json());
