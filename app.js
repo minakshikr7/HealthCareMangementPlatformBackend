@@ -11,14 +11,15 @@ const app = express();
 // 🔌 Connect to MongoDB
 connectDB();
 
-// ✅ Set up CORS for local and deployed frontend
+// ✅ Apply CORS middleware globally (fixes CORS error)
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001",
-  "https://healthcaremangementplatformbackend.onrender.com", // backend (optional)
-  "https://health-care-mangement-platform-fron.vercel.app" // (Optional: add frontend domain when deployed)
+  "https://healthcaremangementplatformbackend.onrender.com",
+  "https://health-care-mangement-platform-fron.vercel.app"
 ];
-app.options("*", cors({
+
+app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
@@ -26,25 +27,24 @@ app.options("*", cors({
       callback(new Error("Not allowed by CORS"));
     }
   },
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   credentials: true
 }));
 
-
-// Middleware to parse JSON & cookies
+// ✅ Middleware to parse JSON & cookies
 app.use(express.json());
 app.use(cookieParser());
 
-// Routes
+// ✅ Routes
 app.use(router);
 app.use(routerr);
 
-// Root route
+// ✅ Root route
 app.get("/", (req, res) => {
   res.send("working");
 });
 
-// Start server
+// ✅ Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
