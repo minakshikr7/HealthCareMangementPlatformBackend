@@ -16,7 +16,10 @@ const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001",
   "https://healthcaremangementplatformbackend.onrender.com",
-  "https://health-care-mangement-platform-fron.vercel.app"
+  "https://health-care-mangement-platform-fron.vercel.app",
+  "https://health-care-mangement-platform-git-772512-minakshikr7s-projects.vercel.app",
+  "https://health-care-mangement-platform-frontend-minakshikr7s-projects.vercel.app",
+  "https://healthcaremangementplatformbackend.onrender.com"
 ];
 
 app.use(cors({
